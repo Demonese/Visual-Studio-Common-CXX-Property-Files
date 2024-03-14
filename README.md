@@ -135,3 +135,7 @@ This property file enable these features:
 * SDL check
 * warning level 4
 * caret fiagnostics format
+
+## Example
+
+![Property Window](/image/property-window.png)
