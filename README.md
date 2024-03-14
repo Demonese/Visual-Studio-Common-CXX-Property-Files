@@ -18,6 +18,51 @@ Better project structure.
 
 2. Add property files as needed to the project.
 
+3. It is strongly recommended to delete the following contents of the .vcxproj files:
+
+```diff
+ <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+   <ClCompile>
+-    <WarningLevel>Level3</WarningLevel>
+-    <SDLCheck>true</SDLCheck>
+-    <ConformanceMode>true</ConformanceMode>
+     <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+   </ClCompile>
+   ...
+ </ItemDefinitionGroup>
+ <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+   <ClCompile>
+-    <WarningLevel>Level3</WarningLevel>
+-    <SDLCheck>true</SDLCheck>
+-    <ConformanceMode>true</ConformanceMode>
+     <FunctionLevelLinking>true</FunctionLevelLinking>
+     <IntrinsicFunctions>true</IntrinsicFunctions>
+     <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+   </ClCompile>
+   ...
+ </ItemDefinitionGroup>
+ <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+   <ClCompile>
+-    <WarningLevel>Level3</WarningLevel>
+-    <SDLCheck>true</SDLCheck>
+-    <ConformanceMode>true</ConformanceMode>
+     <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+   </ClCompile>
+   ...
+ </ItemDefinitionGroup>
+ <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+   <ClCompile>
+-    <WarningLevel>Level3</WarningLevel>
+-    <SDLCheck>true</SDLCheck>
+-    <ConformanceMode>true</ConformanceMode>
+     <FunctionLevelLinking>true</FunctionLevelLinking>
+     <IntrinsicFunctions>true</IntrinsicFunctions>
+     <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+   </ClCompile>
+   ...
+ </ItemDefinitionGroup>
+```
+
 ## Property files
 
 This repository provides the following commonly used property files:
@@ -39,7 +84,6 @@ Reference: [`/utf-8` (Set source and execution character sets to UTF-8)](https:/
 By default, projects created by Visual Studio, build intermediate directories under the project directory, and build output directories are under the solution directory. This default value is not optimal.
 
 The following directory structure is more reasonable:
-
 
 * example-solution-directory
     * build
@@ -91,48 +135,3 @@ This property file enable these features:
 * SDL check
 * warning level 4
 * caret fiagnostics format
-
-It is strongly recommended to delete the following contents of the .vcxproj file:
-
-```diff
- <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-   <ClCompile>
--    <WarningLevel>Level3</WarningLevel>
--    <SDLCheck>true</SDLCheck>
--    <ConformanceMode>true</ConformanceMode>
-     <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-   </ClCompile>
-   ...
- </ItemDefinitionGroup>
- <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-   <ClCompile>
--    <WarningLevel>Level3</WarningLevel>
--    <SDLCheck>true</SDLCheck>
--    <ConformanceMode>true</ConformanceMode>
-     <FunctionLevelLinking>true</FunctionLevelLinking>
-     <IntrinsicFunctions>true</IntrinsicFunctions>
-     <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-   </ClCompile>
-   ...
- </ItemDefinitionGroup>
- <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-   <ClCompile>
--    <WarningLevel>Level3</WarningLevel>
--    <SDLCheck>true</SDLCheck>
--    <ConformanceMode>true</ConformanceMode>
-     <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-   </ClCompile>
-   ...
- </ItemDefinitionGroup>
- <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-   <ClCompile>
--    <WarningLevel>Level3</WarningLevel>
--    <SDLCheck>true</SDLCheck>
--    <ConformanceMode>true</ConformanceMode>
-     <FunctionLevelLinking>true</FunctionLevelLinking>
-     <IntrinsicFunctions>true</IntrinsicFunctions>
-     <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-   </ClCompile>
-   ...
- </ItemDefinitionGroup>
-```
