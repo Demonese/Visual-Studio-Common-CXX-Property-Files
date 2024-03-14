@@ -63,3 +63,4 @@ The following directory structure is more reasonable:
     * example-solution.sln
     * other files...
 
+All build output files are located in build directory.
