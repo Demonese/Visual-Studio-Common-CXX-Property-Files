@@ -23,9 +23,9 @@ Better project structure.
 This repository provides the following commonly used property files:
 
 * utf-8.props
-* cpp-20.props
 * universal-build-output.props
 * hybrid-c-runtime.props
+* cpp-20.props
 
 ### utf-8.props
 
@@ -64,3 +64,17 @@ The following directory structure is more reasonable:
     * other files...
 
 All build output files are located in build directory.
+
+### hybrid-c-runtime.props
+
+Developer tests application and it runs fine locally. Developer build, package and distribute application to users, users feedback that the application cannot run: VC++ runtime library is missing.
+
+Developer thinking: Okay, let's statically link to the C runtime.
+
+But wait a minute, Windows 10 has bundled universal C runtime, can we take advantage of it and reduce the application size?
+
+The answer is yes, we have a trick called "hybrid C runtime".
+
+> Note: Please only add hybrid-c-runtime.props file to the Release configuration, it does not support Debug like configuration.
+
+Reference: [Hybrid CRT](https://github.com/microsoft/WindowsAppSDK/blob/main/docs/Coding-Guidelines/HybridCRT.md)
