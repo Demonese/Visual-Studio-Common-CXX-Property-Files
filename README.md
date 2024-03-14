@@ -26,6 +26,7 @@ This repository provides the following commonly used property files:
 * universal-build-output.props
 * hybrid-c-runtime.props
 * cpp-20.props
+* more-cpp-diagnostics.props
 
 ### utf-8.props
 
@@ -78,3 +79,60 @@ The answer is yes, we have a trick called "hybrid C runtime".
 > Note: Please only add hybrid-c-runtime.props file to the Release configuration, it does not support Debug like configuration.
 
 Reference: [Hybrid CRT](https://github.com/microsoft/WindowsAppSDK/blob/main/docs/Coding-Guidelines/HybridCRT.md)
+
+### cpp-20.props
+
+Using C++ 20.
+
+### more-cpp-diagnostics.props
+
+This property file enable these features:
+
+* SDL check
+* warning level 4
+* caret fiagnostics format
+
+It is strongly recommended to delete the following contents of the .vcxproj file:
+
+```diff
+ <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+   <ClCompile>
+-    <WarningLevel>Level3</WarningLevel>
+-    <SDLCheck>true</SDLCheck>
+-    <ConformanceMode>true</ConformanceMode>
+     <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+   </ClCompile>
+   ...
+ </ItemDefinitionGroup>
+ <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+   <ClCompile>
+-    <WarningLevel>Level3</WarningLevel>
+-    <SDLCheck>true</SDLCheck>
+-    <ConformanceMode>true</ConformanceMode>
+     <FunctionLevelLinking>true</FunctionLevelLinking>
+     <IntrinsicFunctions>true</IntrinsicFunctions>
+     <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+   </ClCompile>
+   ...
+ </ItemDefinitionGroup>
+ <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+   <ClCompile>
+-    <WarningLevel>Level3</WarningLevel>
+-    <SDLCheck>true</SDLCheck>
+-    <ConformanceMode>true</ConformanceMode>
+     <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+   </ClCompile>
+   ...
+ </ItemDefinitionGroup>
+ <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+   <ClCompile>
+-    <WarningLevel>Level3</WarningLevel>
+-    <SDLCheck>true</SDLCheck>
+-    <ConformanceMode>true</ConformanceMode>
+     <FunctionLevelLinking>true</FunctionLevelLinking>
+     <IntrinsicFunctions>true</IntrinsicFunctions>
+     <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+   </ClCompile>
+   ...
+ </ItemDefinitionGroup>
+```
