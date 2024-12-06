@@ -69,7 +69,9 @@ This repository provides the following commonly used property files:
 
 * utf-8.props
 * universal-build-output.props
+* static-c-runtime.props
 * hybrid-c-runtime.props
+* c-17.props
 * cpp-20.props
 * more-cpp-diagnostics.props
 
@@ -125,6 +127,10 @@ The answer is yes, we have a trick called "hybrid C runtime".
 > Note: Please only add hybrid-c-runtime.props file to the Release configuration, it does not support Debug like configuration.
 
 Reference: [Hybrid CRT](https://github.com/microsoft/WindowsAppSDK/blob/main/docs/Coding-Guidelines/HybridCRT.md)
+
+### c-17.props
+
+Using C 17.
 
 ### cpp-20.props
 
