@@ -110,11 +110,13 @@ The following directory structure is more reasonable:
 
 All build output files are located in build directory.
 
-### hybrid-c-runtime.props
+### static-c-runtime.props
 
 Developer tests application and it runs fine locally. Developer build, package and distribute application to users, users feedback that the application cannot run: VC++ runtime library is missing.
 
 Developer thinking: Okay, let's statically link to the C runtime.
+
+### hybrid-c-runtime.props
 
 But wait a minute, Windows 10 has bundled universal C runtime, can we take advantage of it and reduce the application size?
 
